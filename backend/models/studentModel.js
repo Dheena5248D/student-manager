@@ -15,7 +15,7 @@ const studentSchema = new Schema({
     cgpa: mongoose.Types.Decimal128,
     placed: Boolean,
     company: String,
-    historyOfArriors: Boolean
+    historyOfArrears: Boolean
 }, {
     timestamps: true
 });

@@ -43,7 +43,7 @@ exports.updateStudent = async (req, res) => {
         cgpa : req.body.cgpa,
         placed : req.body.placed,
         company : req.body.company,
-        historyOfArriors : req.body.historyOfArriors},{new:true,runValidators:true});
+        historyOfArrears : req.body.historyOfArriors},{new:true,runValidators:true});
   
     if (!student) {
         res.status(404).json({ message: 'Student not found' });
