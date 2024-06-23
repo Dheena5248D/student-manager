@@ -6,8 +6,6 @@ exports.register = async (req, res) => {
         email: req.body.email,
         password: req.body.password
     });
-
-    res.status(201).json(user);
     try {
         const savedUser = await user.save();
         res.status(201).json(savedUser);
@@ -19,10 +17,10 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-        res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'User with the email not found' });
     }
     if (user.password !== req.body.password) {
-        res.status(401).json({ message: 'Invalid password' });
+     return res.status(401).json({ message: 'Invalid password' });
     }
     res.status(200).json(user);
 };

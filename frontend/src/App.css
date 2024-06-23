@@ -1,0 +1,319 @@
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Dashboard styles */
+.content {
+  display: flex;
+  margin-top: 20px;
+}
+
+.filters {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.filters p {
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.add-student {
+  margin-bottom: 20px;
+}
+
+.add-student-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.student-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.student-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.green {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  background-color: #8dff8d;
+}
+
+.student-info {
+  flex: 1;
+}
+
+/* Update the existing .arrow-button style in your App.css */
+.arrow-button {
+  background-color: #4CAF50; /* A pleasant green color */
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  border-radius: 4px; /* Slight rounding of corners */
+}
+
+.arrow-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Login styles */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 30px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.float-right {
+  float: right;
+}
+
+/* Maintained styles from the original App.css */
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(66, 66, 66, 0.2);
+  border: 0px;
+  background-clip: padding-box;
+  border-radius: 5px;
+}
+
+/* Add these styles to your existing App.css */
+
+.add-student-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.add-student-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.add-student-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-student-form input,
+.add-student-form select {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.checkbox-group label {
+  margin-left: 10px;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Add these styles to your existing App.css */
+
+.student-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.student-list-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.student-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.student-card p {
+  margin: 5px 0;
+  color: #34495e;
+}
+
+.student-card p strong {
+  color: #2c3e50;
+}
+/* Add these styles to your existing App.css */
+
+.student-details-fullscreen {
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.student-details-fullscreen h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.student-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.info-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.info-item label {
+  font-weight: bold;
+  color: #34495e;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info-item span {
+  color: #2c3e50;
+  font-size: 1.1em;
+}
+
+.full-screen-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 24px;
+  color: #2c3e50;
+  background-color: #f0f4f8;
+}
+
+.full-screen-message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+.green-info-item {
+  background-color: rgb(61, 226, 61);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
