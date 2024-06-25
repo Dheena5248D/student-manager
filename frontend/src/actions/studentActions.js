@@ -9,7 +9,10 @@ import {
     getStudentDetailsFailure,
     updateStudentRequest,
     updateStudentSuccess,
-    updateStudentFailure
+    updateStudentFailure,
+    deleteStudentRequest,
+    deleteStudentSuccess,
+    deleteStudentFailure
 } from '../slices/studentSlice';
 import axios from 'axios';
 
@@ -49,5 +52,15 @@ export const updateStudent = (student, id) => async (dispatch) => {
         dispatch(updateStudentSuccess(response.data));
     } catch (error) {
         dispatch(updateStudentFailure(error.response.data));
+    }
+}
+
+export const deleteStudent = (id) => async (dispatch) => {
+    dispatch(deleteStudentRequest());
+    try {
+        await axios.delete(`/api/deletestudent/${id}`);
+        dispatch(deleteStudentSuccess(id));
+    } catch (error) {
+        dispatch(deleteStudentFailure(error.response.data));
     }
 }

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { updateStudent } from '../actions/studentActions';
+import { updateStudent, deleteStudent } from '../actions/studentActions';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { clearStudentUpdated } from '../slices/studentSlice';  // Import the action
+import { clearStudentUpdated, clearStudentDeleted } from '../slices/studentSlice';
 
 export default function AddStudent() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { error, studentDetails, studentUpdated } = useSelector((state) => state.studentReducer);
+    const { error, studentDetails, studentUpdated, studentDeleted } = useSelector((state) => state.studentReducer);
 
     useEffect(() => {
         if (error) {
@@ -20,10 +20,18 @@ export default function AddStudent() {
     useEffect(() => {
         if (studentUpdated) {
             toast.success("Student data updated successfully!");
-            dispatch(clearStudentUpdated());  // Reset the studentUpdated state
+            dispatch(clearStudentUpdated());
             navigate('/dashboard');
         }
     }, [studentUpdated, navigate, dispatch]);
+
+    useEffect(() => {
+        if (studentDeleted) {
+            toast.success("Student deleted successfully!");
+            dispatch(clearStudentDeleted());
+            navigate('/dashboard');
+        }
+    }, [studentDeleted, navigate, dispatch]);
 
     const [student, setStudent] = useState({
         name: studentDetails?.name || '',
@@ -52,38 +60,105 @@ export default function AddStudent() {
         dispatch(updateStudent(student, student.id));
     };
 
+    const handleDelete = () => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this student?");
+        if (confirmDelete) {
+            dispatch(deleteStudent(student.id));
+        }
+    };
+
     return (
         <div className="add-student-container">
             <h2>Update Student Details</h2>
             <form onSubmit={handleSubmit} className="add-student-form">
-                <input type="text" name="name" value={student.name} onChange={handleChange} placeholder="Name" required />
-                <input type="text" name="regNumber" value={student.regNumber} onChange={handleChange} placeholder="Registration Number" required />
-                <input type="number" name="age" value={student.age} onChange={handleChange} placeholder="Age" />
+                <input 
+                    type="text" 
+                    name="name" 
+                    value={student.name} 
+                    onChange={handleChange} 
+                    placeholder="Name" 
+                    required 
+                    readOnly // Make this field read-only
+                />
+                <input 
+                    type="text" 
+                    name="regNumber" 
+                    value={student.regNumber} 
+                    onChange={handleChange} 
+                    placeholder="Registration Number" 
+                    required 
+                    readOnly // Make this field read-only
+                />
+                <input 
+                    type="number" 
+                    name="age" 
+                    value={student.age} 
+                    onChange={handleChange} 
+                    placeholder="Age" 
+                />
                 <select name="gender" value={student.gender} onChange={handleChange}>
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                 </select>
-                <input type="email" name="email" value={student.email} onChange={handleChange} placeholder="Email" />
-                <input type="tel" name="phone" value={student.phone} onChange={handleChange} placeholder="Phone" required />
-                <input type="number" name="cgpa" value={student.cgpa} onChange={handleChange} placeholder="CGPA" step="0.01" />
+                <input 
+                    type="email" 
+                    name="email" 
+                    value={student.email} 
+                    onChange={handleChange} 
+                    placeholder="Email" 
+                    readOnly // Make this field read-only
+                />
+                <input 
+                    type="tel" 
+                    name="phone" 
+                    value={student.phone} 
+                    onChange={handleChange} 
+                    placeholder="Phone" 
+                    required 
+                />
+                <input 
+                    type="number" 
+                    name="cgpa" 
+                    value={student.cgpa} 
+                    onChange={handleChange} 
+                    placeholder="CGPA" 
+                    step="0.01" 
+                />
                 <div className="checkbox-group">
                     <label>
-                        <input type="checkbox" name="placed" checked={student.placed} onChange={handleChange} />
+                        <input 
+                            type="checkbox" 
+                            name="placed" 
+                            checked={student.placed} 
+                            onChange={handleChange} 
+                        />
                         Placed
                     </label>
                 </div>
                 {student.placed && (
-                    <input type="text" name="company" value={student.company} onChange={handleChange} placeholder="Company" />
+                    <input 
+                        type="text" 
+                        name="company" 
+                        value={student.company} 
+                        onChange={handleChange} 
+                        placeholder="Company" 
+                    />
                 )}
                 <div className="checkbox-group">
                     <label>
-                        <input type="checkbox" name="historyOfArrears" checked={student.historyOfArrears} onChange={handleChange} />
+                        <input 
+                            type="checkbox" 
+                            name="historyOfArrears" 
+                            checked={student.historyOfArrears} 
+                            onChange={handleChange} 
+                        />
                         History of Arrears
                     </label>
                 </div>
-                <button type="submit" className="submit-btn">Update Student details</button>
+                <button type="submit" className="submit-btn">Update Student Details</button>
+                <button type="button" className="delete-btn" onClick={handleDelete}>Delete Student</button>
             </form>
         </div>
     );
