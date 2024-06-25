@@ -3,6 +3,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AddStudent from './components/AddStudent';
 import StudentDetails from './components/StudentDetails';
+import UpdateStudent from './components/UpdateStudent';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import './App.css';
@@ -20,6 +21,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/add-student' element={<AddStudent />} />
           <Route path='/student/:id' element={<StudentDetails />} />
+          <Route path='/update-student' element={<UpdateStudent />} />
         </Routes>
       </Router>
     </div>

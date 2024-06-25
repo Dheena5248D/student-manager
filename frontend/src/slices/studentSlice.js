@@ -7,7 +7,8 @@ const studentSlice = createSlice({
         loading: false,
         error: null,
         studentAdded: false,
-        studentDetails: null
+        studentDetails: null,
+        studentUpdated: false
     },
     reducers: {
         getStudentsRequest: (state) => {
@@ -46,12 +47,34 @@ const studentSlice = createSlice({
         },
         getStudentDetails: (state, action) => {
             state.studentDetails = action.payload;
-            console.log('Student Details:', action.payload);
         },
         getStudentDetailsFailure: (state, action) => {
             state.studentDetails = null;
             state.error = action.payload;
-        }
+        },
+        updateStudentRequest: (state) => {
+            state.loading = true;
+            state.error = null;
+            state.studentUpdated = false;
+        },
+        updateStudentSuccess: (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.studentUpdated = true;
+            
+            const index = state.students.findIndex(student => student.id === action.payload.id);
+            if (index !== -1) {
+                state.students[index] = action.payload;
+            }
+        },
+        updateStudentFailure: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+            state.studentUpdated = false;
+        },
+        clearStudentUpdated: (state) => {
+            state.studentUpdated = false;
+        },
     }
 });
 
@@ -64,7 +87,11 @@ export const {
     addStudentFailure,
     clearStudentAdded,
     getStudentDetails,
-    getStudentDetailsFailure
+    getStudentDetailsFailure,
+    updateStudentRequest,
+    updateStudentSuccess,
+    updateStudentFailure,
+    clearStudentUpdated
 } = studentSlice.actions;
 
 export default studentSlice.reducer;
