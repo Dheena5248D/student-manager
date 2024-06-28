@@ -78,7 +78,7 @@ export default function AddStudent() {
                     onChange={handleChange} 
                     placeholder="Name" 
                     required 
-                    readOnly // Make this field read-only
+                    readOnly
                 />
                 <input 
                     type="text" 
@@ -87,7 +87,7 @@ export default function AddStudent() {
                     onChange={handleChange} 
                     placeholder="Registration Number" 
                     required 
-                    readOnly // Make this field read-only
+                    readOnly 
                 />
                 <input 
                     type="number" 
@@ -108,7 +108,7 @@ export default function AddStudent() {
                     value={student.email} 
                     onChange={handleChange} 
                     placeholder="Email" 
-                    readOnly // Make this field read-only
+                    readOnly
                 />
                 <input 
                     type="tel" 

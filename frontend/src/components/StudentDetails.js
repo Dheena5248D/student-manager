@@ -19,8 +19,6 @@ export default function StudentList() {
         navigate('/update-student');
     }
 
-    console.log('Student Details:', studentDetails);
-
     return (
         <div className="student-details-fullscreen">
             <h1>Student Details</h1>

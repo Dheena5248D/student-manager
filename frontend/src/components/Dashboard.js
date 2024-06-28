@@ -12,7 +12,6 @@ export default function Dashboard() {
         navigate('/add-student');  
     };
     const handleArrowClick = (student) => {
-
         navigate(`/student/${student}`);
     }
 
